@@ -32,13 +32,13 @@ services:
             - "jenkins-docker-certs:/certs/client:ro"
         
 
-   #  localtunnel:
-   #      build:
-   #        context: ./localtunnel
-   #        dockerfile: Dockerfile
-   #      links:
-   #          - myjenkins-blueocean
-   #      command: --local-host myjenkins-blueocean --port 80 --subdomain docker-projects
+    localtunnel:
+        build:
+          context: ./localtunnel
+          dockerfile: Dockerfile
+        links:
+            - myjenkins-blueocean
+        command: --local-host myjenkins-blueocean --port 80 --subdomain docker-projects
 
 volumes:
    docker:
