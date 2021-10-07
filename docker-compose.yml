@@ -39,6 +39,6 @@ services:
    #          - myjenkins-blueocean
    #      command: --local-host myjenkins-blueocean --port 80 --subdomain docker-projects
 
-   volumes:
-    docker:
-    myjenkins-blueocean:
+    volumes:
+      docker:
+      myjenkins-blueocean:
