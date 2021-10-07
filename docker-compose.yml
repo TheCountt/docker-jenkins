@@ -34,7 +34,7 @@ services:
 
     localtunnel:
         build:
-          context: ./localtunnel
+          context: ~/localtunnel
           dockerfile: Dockerfile
         links:
             - myjenkins-blueocean
