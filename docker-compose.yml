@@ -1,14 +1,14 @@
 version: "3.9"
 services:
-    docker:
+    jenkins-docker:
         container_name: jenkins-docker
         privileged: true
         network_mode: tooling_app_network
         environment:
             - DOCKER_TLS_CERTDIR=/certs
         volumes:
-            - "jenkins-docker-certs:/certs/client"
-            - "jenkins-data:/var/jenkins_home"
+            - 'jenkins-docker-certs:/certs/client'
+            - 'jenkins-data:/var/jenkins_home'
         ports:
             - "2376:2376"
         image: "docker:dind"
@@ -40,5 +40,5 @@ services:
    #      command: --local-host myjenkins-blueocean --port 80 --subdomain docker-projects
 
     volumes:
-      docker:
+      jenkins-docker:
       myjenkins-blueocean:
