@@ -1,9 +1,11 @@
 version: "3.9"
 services:
-    jenkins-docker:
+    docker:
+        image: "docker:dind"
         container_name: jenkins-docker
         privileged: true
         network_mode: tooling_app_network
+        command: --storage-driver=overlay2
         environment:
             - DOCKER_TLS_CERTDIR=/certs
         volumes:
@@ -11,10 +13,9 @@ services:
             - 'jenkins-data:/var/jenkins_home'
         ports:
             - "2376:2376"
-        image: "docker:dind"
-        command: --storage-driver=overlay2
 
     myjenkins-blueocean:
+        image: "myjenkins-blueocean:1.1"
         container_name: jenkins-blueocean
         network_mode: tooling_app_network
         environment:
@@ -29,7 +30,7 @@ services:
         volumes:
             - "jenkins-data:/var/jenkins_home"
             - "jenkins-docker-certs:/certs/client:ro"
-        image: "myjenkins-blueocean:1.1"
+        
 
    #  localtunnel:
    #      build:
@@ -39,6 +40,8 @@ services:
    #          - myjenkins-blueocean
    #      command: --local-host myjenkins-blueocean --port 80 --subdomain docker-projects
 
-    volumes:
-      jenkins-docker-certs:
-      jenkins-data:
+volumes:
+   docker:
+   myjenkins-blueocean:
+   jenkins-docker-certs:
+   jenkins-data:
