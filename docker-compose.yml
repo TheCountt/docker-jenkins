@@ -13,9 +13,7 @@ services:
             - 'jenkins-docker-certs:/certs/client'
             - 'jenkins-data:/var/jenkins_home'
         ports:
-            - 127.0.0.1:23760:2376
             - "2376:2376"
-
 
     myjenkins-blueocean:
         image: "myjenkins-blueocean:1.1"
@@ -34,18 +32,16 @@ services:
             - "jenkins-docker-certs:/certs/client:ro"
         
 
-    # localtunnel:
-    #     build:
-    #       context: ~/localtunnel
-    #       dockerfile: Dockerfile
-    #     network_mode: tooling_app_network
+    localtunnel:
+        build:
+          context: ~/localtunnel
+          dockerfile: Dockerfile
+        network_mode: tooling_app_network
         
-    #     command: --local-host myjenkins-blueocean --port 8080 --subdomain docker-projects
+        command: --local-host myjenkins-blueocean --port 8080 --subdomain docker-projects
 
 volumes:
    docker:
+   myjenkins-blueocean:
    jenkins-docker-certs:
    jenkins-data:
-   myjenkins-blueocean:
-   
-   
