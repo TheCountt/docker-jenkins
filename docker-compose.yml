@@ -33,13 +33,13 @@ services:
             - "jenkins-docker-certs:/certs/client:ro"
         
 
-    localtunnel:
-        build:
-          context: ~/localtunnel
-          dockerfile: Dockerfile
-        network_mode: tooling_app_network
+    # localtunnel:
+    #     build:
+    #       context: ~/localtunnel
+    #       dockerfile: Dockerfile
+    #     network_mode: tooling_app_network
         
-        command: --local-host myjenkins-blueocean --port 8080 --subdomain docker-projects
+    #     command: --local-host myjenkins-blueocean --port 50000 --subdomain docker-projects
 
 volumes:
    docker:
