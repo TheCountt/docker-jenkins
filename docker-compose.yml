@@ -5,7 +5,7 @@ services:
         container_name: jenkins-docker
         privileged: true
         network_mode: tooling_app_network
-        command: --storage-driver=overlay2
+        
         environment:
             - DOCKER_TLS_CERTDIR=/certs
         volumes:
