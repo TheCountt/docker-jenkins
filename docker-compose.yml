@@ -13,6 +13,7 @@ services:
             - 'jenkins-docker-certs:/certs/client'
             - 'jenkins-data:/var/jenkins_home'
         ports:
+            - 127.0.0.1:23760:2376
             - "2376:2376"
 
     myjenkins-blueocean:
@@ -20,7 +21,7 @@ services:
         container_name: jenkins-blueocean
         network_mode: tooling_app_network
         environment:
-            - DOCKER_HOST=tcp://docker:2376
+            - DOCKER_HOST=tcp://127.0.0.1:2376
             - DOCKER_CERT_PATH=/certs/client
             - DOCKER_TLS_VERIFY=1
         ports:
