@@ -13,7 +13,9 @@ services:
             - 'jenkins-docker-certs:/certs/client'
             - 'jenkins-data:/var/jenkins_home'
         ports:
+            - 127.0.0.1:23760:2376
             - "2376:2376"
+
 
     myjenkins-blueocean:
         image: "myjenkins-blueocean:1.1"
