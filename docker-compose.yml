@@ -8,6 +8,7 @@ services:
         
         environment:
             - DOCKER_TLS_CERTDIR=/certs
+            - DOCKER_DRIVER=overlay2
         volumes:
             - 'jenkins-docker-certs:/certs/client'
             - 'jenkins-data:/var/jenkins_home'
@@ -31,16 +32,18 @@ services:
             - "jenkins-docker-certs:/certs/client:ro"
         
 
-    localtunnel:
-        build:
-          context: ~/localtunnel
-          dockerfile: Dockerfile
-        network_mode: tooling_app_network
+    # localtunnel:
+    #     build:
+    #       context: ~/localtunnel
+    #       dockerfile: Dockerfile
+    #     network_mode: tooling_app_network
         
-        command: --local-host myjenkins-blueocean --port 8080 --subdomain docker-projects
+    #     command: --local-host myjenkins-blueocean --port 8080 --subdomain docker-projects
 
 volumes:
    docker:
-   myjenkins-blueocean:
    jenkins-docker-certs:
    jenkins-data:
+   myjenkins-blueocean:
+   
+   
